@@ -5,7 +5,11 @@ chrome.webRequest.onBeforeRequest.addListener(
         var blockRequest = false;
         var xssRegex = /<script>.+<\/script>/i
         
-        if(xssRegex.test(details.url)) {
+        unescapedURL = unescape(details.url);
+        
+        alert('About to test regex ' + unescapedURL)
+        
+        if(xssRegex.test(unescapedURL)) {
             blockRequest = true;            
         }
         
