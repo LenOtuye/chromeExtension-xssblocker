@@ -3,7 +3,7 @@ alert('this is a test')
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
         var blockRequest = false;
-        var xssRegex = /script/i
+        var xssRegex = /<script>.+<\/script>/i
         
         if(xssRegex.test(details.url)) {
             blockRequest = true;            
