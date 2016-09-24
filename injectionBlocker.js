@@ -13,6 +13,10 @@ chrome.webRequest.onBeforeRequest.addListener(
             blockRequest = true;            
         }
         
+        if(details.method == 'POST') {
+            alert('post method - testing parameters')
+        }
+        
         if(blockRequest) {
             alert('You have been protected from a potential XSS attack')
         }
